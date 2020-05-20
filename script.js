@@ -10,9 +10,13 @@ const streetDetails = document.getElementById("street-details");
 const cityDetails = document.getElementById("city-details");
 const radiusDetails = document.getElementById("radius-details");
 const pResults = document.getElementById("p-results");
+const displayBtn = document.getElementById("display-btn");
 const downloadBtn = document.getElementById("download-btn");
 
-// Properties array
+// Table
+const tableResults = document.getElementById("table-results");
+
+// Properties array & Erase table
 let propertiesArr = [];
 
 // Fetch properties from API by search coordinates
@@ -99,9 +103,106 @@ const downloadCSV = () => {
 	}
 };
 
+// Create table headers
+const createTableHeaders = () => {
+	const thead = document.createElement("thead");
+	thead.classList.add("thead-light");
+
+	const tr = document.createElement("tr");
+
+	const dateTh = document.createElement("th");
+	dateTh.innerText = "Date";
+	const streetTh = document.createElement("th");
+	streetTh.innerText = "Rue";
+	const cityTh = document.createElement("th");
+	cityTh.innerText = "Ville";
+	const typeTh = document.createElement("th");
+	typeTh.innerText = "Type";
+	const surfaceTh = document.createElement("th");
+	surfaceTh.innerText = "Surface";
+	const priceTh = document.createElement("th");
+	priceTh.innerText = "Prix";
+	const nbRoomTh = document.createElement("th");
+	nbRoomTh.innerText = "Nb Pièces";
+
+	tr.appendChild(dateTh);
+	tr.appendChild(streetTh);
+	tr.appendChild(cityTh);
+	tr.appendChild(typeTh);
+	tr.appendChild(surfaceTh);
+	tr.appendChild(priceTh);
+	tr.appendChild(nbRoomTh);
+
+	thead.appendChild(tr);
+	tableResults.appendChild(thead);
+};
+
+// Create table body
+const createTableBody = () => {
+	const tbody = document.createElement("tbody");
+
+	// Fill table
+	propertiesArr.forEach((p, index) => {
+		if (index < 100) {
+			const tr = document.createElement("tr");
+
+			const {
+				date_mutation,
+				commune,
+				nombre_pieces_principales,
+				surface_relle_bati,
+				type_local,
+				valeur_fonciere,
+				voie,
+				type_voie
+			} = p;
+
+			const dateTd = document.createElement("td");
+			dateTd.innerText = date_mutation;
+			const streetTd = document.createElement("td");
+			streetTd.innerText = `${voie} (${type_voie ? type_voie.toLowerCase() : ""})`;
+			const cityTd = document.createElement("td");
+			cityTd.innerText = commune;
+			const typeTd = document.createElement("td");
+			typeTd.innerText = type_local;
+			const surfaceTd = document.createElement("td");
+			surfaceTd.innerText = surface_relle_bati;
+			const priceTd = document.createElement("td");
+			priceTd.innerText = valeur_fonciere;
+			const nbRoomTd = document.createElement("td");
+			nbRoomTd.innerText = nombre_pieces_principales;
+
+			tr.appendChild(dateTd);
+			tr.appendChild(streetTd);
+			tr.appendChild(cityTd);
+			tr.appendChild(typeTd);
+			tr.appendChild(surfaceTd);
+			tr.appendChild(priceTd);
+			tr.appendChild(nbRoomTd);
+
+			tbody.appendChild(tr);
+		}
+	});
+
+	tableResults.appendChild(tbody);
+};
+
+// Display first 100 properties in table
+const displayTable = () => {
+	// Create table headers
+	createTableHeaders();
+
+	// Create table body
+	createTableBody();
+};
+
 // Event Listeners
 submitBtn.addEventListener("click", async (e) => {
 	e.preventDefault();
+
+	// Reset propertiesArr
+	propertiesArr = [];
+	tableResults.innerHTML = "";
 
 	// Fetch properties
 	propertiesArr = await getProperties();
@@ -126,4 +227,8 @@ submitBtn.addEventListener("click", async (e) => {
 
 downloadBtn.addEventListener("click", () => {
 	downloadCSV();
+});
+
+displayBtn.addEventListener("click", () => {
+	displayTable();
 });
