@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>Prix Immobilier</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1 class="text-center mb-3">Prix Immobilier</h1>
+    <h4 class="text-center mb-3">Vérifiez les prix de l'immobilier proche de chez vous</h4>
+
+    <br>
+    <br>
+
+    <div class="row justify-content-between mb-3">
+      <div class="col-5 sub-container">
+
+        <h3 class="text-center header">Recherche</h3>
+        
+        <form>
+
+          <div class="row mb-3">
+            <div class="form-group col-md-4">
+              <label>Numéro</label>
+              <input id="street-nb" class="form-control" name="streetNb" placeholder="18" type="text" required />
+            </div>
+            <div class="form-group col-md-8">
+              <label>Nom de la Rue</label>
+              <input id="street-name" class="form-control" name="streetName" placeholder="Rue Martissot" type="text" required />
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="form-group col-md-8">
+              <label>Ville</label>
+              <input id="city" class="form-control" name="city" placeholder="Bordeaux" type="text" required />
+            </div>
+            <div class="form-group col-md-4">
+              <label>Rayon <span class="text-muted">(en metres)</span></label>
+              <input id="radius" class="form-control" name="radius" placeholder="200" type="number" required />
+            </div>
+          </div>
+
+          <input id="submit-btn" class="btn btn-outline-primary btn-block" type="submit" value="Rechercher" />
+        </form>
+      </div>
+
+      <div class="col-5 sub-container">
+        <h3 class="text-center header">Résultats</h3>
+
+        <p id="p-results" class="text-center mb-3">Pas de recherche en cours</p>
+
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between">
+            <div>
+              <h6 id="street-details" class="my-0">N/A</h6><small class="text-muted">Numéro & Rue</small>
+            </div>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <div>
+              <h6 id="city-details" class="my-0">N/A</h6><small class="text-muted">Ville</small>
+            </div>
+            <div>
+              <h6 id="radius-details" class="my-0">N/A</h6><small class="text-muted">Rayon</small>
+            </div>
+          </li>
+        </ul>
+
+        <button class="btn btn-outline-success btn-block" id="download-btn" type="button">Télécharger</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  
+</body>
+</html>
