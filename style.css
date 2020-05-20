@@ -19,13 +19,17 @@ body {
 	border: 1px solid #aaa;
 	border-radius: 15px;
 	padding: 20px;
-	margin: 20px 10px;
+	margin: 20px 10px 50px 10px;
 	box-shadow: 0 20px 20px 0 rgba(200, 200, 200, 0.6);
 	position: relative;
 }
 
 .btn {
 	font-size: 20px;
+}
+
+.row > .btn {
+	margin: 0 15px 0 15px;
 }
 
 .btn:focus {
@@ -49,4 +53,12 @@ body {
 
 label > span {
 	font-size: 13px;
+}
+
+.list-group {
+	padding-left: 15px;
+}
+
+p {
+	margin: 0;
 }
