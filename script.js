@@ -206,7 +206,9 @@ submitBtn.addEventListener("click", async (e) => {
 
 	// Fetch properties
 	propertiesArr = await getProperties();
-	console.log(propertiesArr[0]);
+	propertiesArr.sort((a, b) => parseFloat(b.date_mutation) - parseFloat(a.date_mutation));
+
+	// console.log(propertiesArr[0]);
 
 	// Display number of results
 	pResults.innerHTML = `
