@@ -27,7 +27,7 @@ const getProperties = async () => {
 	// Get properties from API
 	const dist = radius.value ? radius.value : 200;
 	let res = await fetch(
-		`http://api.cquest.org/dvf?lat=${coords[0].lat}&lon=${coords[0]
+		`https://api.cquest.org/dvf?lat=${coords[0].lat}&lon=${coords[0]
 			.lon}&dist=${dist}&nature_mutation=Vente`
 	);
 	res = await res.json();
