@@ -185,6 +185,7 @@ const createTableBody = () => {
 	});
 
 	tableResults.appendChild(tbody);
+	$("#table-results").DataTable();
 };
 
 // Display first 100 properties in table
@@ -202,7 +203,9 @@ submitBtn.addEventListener("click", async (e) => {
 
 	// Reset propertiesArr
 	propertiesArr = [];
-	tableResults.innerHTML = "";
+
+	// Reset tableResults
+	tableResults.innerHTML = `<table id="table-results"></table>`;
 
 	// Fetch properties
 	propertiesArr = await getProperties();

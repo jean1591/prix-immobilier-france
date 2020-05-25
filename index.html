@@ -4,8 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+  <!-- JQuery & DataTables -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+
+  <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css">
   <title>Prix Immobilier</title>
 </head>
@@ -31,7 +39,7 @@
 
         <form>
 
-          <div class="row mb-3">
+          <div class="row">
             <div class="form-group col-md-4">
               <label>Numéro</label>
               <input id="street-nb" class="form-control" name="streetNb" placeholder="18" type="text" required />
@@ -85,29 +93,39 @@
           </ul>
         </div>
 
-        <div class="row justify-content-between">
-          <button class="btn btn-outline-success col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5" id="display-btn"
-          type="button">Afficher</button>
-          <button class="btn btn-outline-success col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5" id="download-btn"
-            type="button">Télécharger</button>
+        <div class="row">
+          <div class="button-row col-12">
+            <button class="btn btn-outline-success col-md-12 col-lg-5 offset-lg-1" id="display-btn"
+              type="button">Afficher</button>
+            <button class="btn btn-outline-success col-md-12 col-lg-5" id="download-btn"
+              type="button">Télécharger</button>
+          </div>
         </div>
       </div>
       <!-- END DOWNLOAD -->
 
     </div>
     <!-- END ROW 1: SEARCH AND DOWNLOAD -->
-    
+
     <!-- START ROW 2: DISPLAY -->
     <div class="row mb-3">
-      <table id="table-results" class="table table-striped table hover table-sm"></table>
+      <!-- <table id="table-results" class="table table-striped table-hover table-sm"></table> -->
+      <table id="table-results" class="table table-striped table-hover table-sm display"></table>
     </div>
 
+    <!-- START FOOTER -->
+    <footer>
+      <hr>
+      <p class="text-center">Jean Robertou</p>
+      <p class="text-center">Données de DVF - API de cquest</p>
+    </footer>
+    <!-- END FOOTER -->
 
   </div>
   <!-- END CONTAINER -->
 
   <script src="script.js"></script>
-
+  <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 </body>
 
 </html>
