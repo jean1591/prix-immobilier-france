@@ -185,7 +185,9 @@ const createTableBody = () => {
 	});
 
 	tableResults.appendChild(tbody);
-	$("#table-results").DataTable();
+	// Pre $("#table-results").DataTable();
+	$("#table-results").DataTable(); // Current $("#table-results").DataTable();
+	// Post $("#table-results").DataTable();
 };
 
 // Display first 100 properties in table
